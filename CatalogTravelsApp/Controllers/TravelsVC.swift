@@ -16,10 +16,11 @@ class TravelsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCompositionlayout())
         collectionView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView?.backgroundColor = .systemBackground
+        collectionView?.delegate = self
         guard let collectView = collectionView else { return }
         view.addSubview(collectView)
         
@@ -36,6 +37,42 @@ class TravelsVC: UIViewController {
         collectionView?.register(MediumTableCell.self, forCellWithReuseIdentifier: MediumTableCell.reuseableIdentifier)
     }
     
+    private func configureCells<T: ConfiguringCell>(_ cellType: T.Type, with app: App, for indexPath: IndexPath) -> T {
+        
+        guard let cell = collectionView?.dequeueReusableCell(withReuseIdentifier: cellType.reuseableIdentifier, for: indexPath) as? T else { fatalError("Unable dequeu cells") }
+        
+        cell.configureCellLayout(with: app)
+        
+        return cell
+    }
+    
+    private func createCompositionlayout() -> UICollectionViewLayout {
+        
+        let layout = UICollectionViewCompositionalLayout { (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
+            
+            let section = self.sections[sectionIndex]
+            switch section.type {
+            case "smallTable":
+                return self.createSmallTableLayout(using: section)
+            case "mediumTable":
+                return self.createMediumTableLayout(using: section)
+            default:
+                return self.createTopPopularLayout(using: section)
+            }
+        }
+        
+        let config = UICollectionViewCompositionalLayoutConfiguration()
+        config.interSectionSpacing = 10
+        layout.configuration = config
+        
+        return layout
+    }
+    
+}
+
+// MARK: - Diffable Data Source Setup
+
+extension TravelsVC {
     private func diffableDataSource() {
         guard let collectView = collectionView else { return }
         
@@ -83,38 +120,11 @@ class TravelsVC: UIViewController {
         
         dataSource?.apply(snapshot)
     }
-    
-    private func configureCells<T: ConfiguringCell>(_ cellType: T.Type, with app: App, for indexPath: IndexPath) -> T {
-        
-        guard let cell = collectionView?.dequeueReusableCell(withReuseIdentifier: cellType.reuseableIdentifier, for: indexPath) as? T else { fatalError("Unable dequeu cells") }
-        
-        cell.configureCellLayout(with: app)
-        
-        return cell
-    }
-    
-    private func createCompositionlayout() -> UICollectionViewLayout {
-        
-        let layout = UICollectionViewCompositionalLayout { (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
-            
-            let section = self.sections[sectionIndex]
-            switch section.type {
-            case "smallTable":
-                return self.createSmallTableLayout(using: section)
-            case "mediumTable":
-                return self.createMediumTableLayout(using: section)
-            default:
-                return self.createTopPopularLayout(using: section)
-            }
-        }
-        
-        let config = UICollectionViewCompositionalLayoutConfiguration()
-        config.interSectionSpacing = 10
-        layout.configuration = config
-        
-        return layout
-    }
-    
+}
+
+// MARK: - Compositional Layout Setup
+
+extension TravelsVC {
     private func createTopPopularLayout(using section: Section) -> NSCollectionLayoutSection {
         
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
@@ -159,7 +169,7 @@ class TravelsVC: UIViewController {
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.75),
                                                heightDimension: .estimated(200))
         let groupLayout = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
-                                                           subitems: [itemLayout])        
+                                                           subitems: [itemLayout])
         
         let section = NSCollectionLayoutSection(group: groupLayout)
         section.interGroupSpacing = 10
@@ -177,6 +187,15 @@ class TravelsVC: UIViewController {
         let layoutSectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: layoutSectionHeaderSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
         return layoutSectionHeader
     }
-    
 }
 
+// MARK: - Collection View Delegate
+
+extension TravelsVC: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        dismiss(animated: true, completion: nil)
+        print("Selected item at \(sections[indexPath.section].items[indexPath.row])")
+    }
+    
+}
