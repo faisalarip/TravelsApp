@@ -1,7 +1,7 @@
 [
 	{
         "id": 1,
-		"type": "Top Popular",
+		"type": "Feature",
 		"title": "",
 		"subtitle": "",
 		"items": [
@@ -94,7 +94,7 @@
         "subtitle": "",
         "items": [
             {
-                "id": 31,
+                "id": 21,
                 "tagline": "",
                 "name": "Islands",
                 "subheading": "",
@@ -102,7 +102,7 @@
                 "iap": true
             },
             {
-                "id": 32,
+                "id": 22,
                 "tagline": "",
                 "name": "Naturess",
                 "subheading": "",
@@ -110,7 +110,7 @@
                 "iap": false
             },
             {
-                "id": 33,
+                "id": 23,
                 "tagline": "",
                 "name": "Mountains",
                 "subheading": "",
@@ -118,7 +118,7 @@
                 "iap": true
             },
             {
-                "id": 34,
+                "id": 24,
                 "tagline": "",
                 "name": "Waterfalls",
                 "subheading": "",
@@ -126,7 +126,7 @@
                 "iap": false
             },
             {
-                "id": 35,
+                "id": 25,
                 "tagline": "",
                 "name": "Beachs",
                 "subheading": "",
@@ -138,409 +138,357 @@
 	{
         "id": 3,
 		"type": "mediumTable",
-		"title": "See it in Dark Mode",
-		"subtitle": "These apps are easy on the eyes",
+		"title": "Top Popular",
+		"subtitle": "These travels are most popular in the year",
 		"items": [
-			{
-				"id": 11,
-				"tagline": "Featured",
-				"name": "Strokey",
-				"subheading": "You'll never stroke the same way again.",
-				"image": "iOS1",
-				"iap": true
-			},
-			{
-				"id": 12,
-				"tagline": "See it in dark mode",
-				"name": "Smartwhirl",
-				"subheading": "People who love whirling just like you!",
-				"image": "iOS2",
-				"iap": false
-			},
-			{
-				"id": 13,
-				"tagline": "New update",
-				"name": "Professorify",
-				"subheading": "Introducing the world’s first experienced professor.",
-				"image": "iOS3",
-				"iap": true
-			},
-			{
-				"id": 14,
-				"tagline": "Featured",
-				"name": "SituationMe",
-				"subheading": "Your Situation. Dedicated.",
-				"image": "iOS4",
-				"iap": false
-			},
-			{
-				"id": 15,
-				"tagline": "New update",
-				"name": "Squeally",
-				"subheading": "Motivate your niche in the squealing ecosystem.",
-				"image": "iOS5",
-				"iap": true
-			},
-			{
-				"id": 16,
-				"tagline": "See it in dark mode",
-				"name": "youplayer",
-				"subheading": "Harmonize your inner player.",
-				"image": "iOS6",
-				"iap": false
-			},
-			{
-				"id": 17,
-				"tagline": "Must-have app",
-				"name": "Spellnow",
-				"subheading": "Dare to spell the smart way.",
-				"image": "iOS7",
-				"iap": true
-			},
-			{
-				"id": 18,
-				"tagline": "New update",
-				"name": "S.A.C.K.",
-				"subheading": "Sack people online using our cloud software.",
-				"image": "iOS8",
-				"iap": false
-			},
-			{
-				"id": 19,
-				"tagline": "See it in dark mode",
-				"name": "Yodely",
-				"subheading": "You like to yodel. Yodely does too.",
-				"image": "iOS9",
-				"iap": true
-			}
-		]
+            {
+                "id": 31,
+                "tagline": "Island",
+                "name": "Pulo Cinta",
+                "subheading": "Gorontalo, Sulawesi, Indonesia",
+                "image": "image9",
+                "iap": true
+            },
+            {
+                "id": 32,
+                "tagline": "Island",
+                "name": "Labuan Bajo",
+                "subheading": "Nusa Tenggara Timur, Indonesia.",
+                "image": "image1",
+                "iap": true
+            },
+            {
+                "id": 33,
+                "tagline": "Island",
+                "name": "Kepulauan Kei",
+                "subheading": "Maluku, Indonesia.",
+                "image": "image2",
+                "iap": false
+            },
+            {
+                "id": 34,
+                "tagline": "Island",
+                "name": "Kepulauan Raja Ampat",
+                "subheading": "Papua Barat, Indonesia.",
+                "image": "image6",
+                "iap": false
+            },
+            {
+                "id": 35,
+                "tagline": "Island",
+                "name": "Pulau Komodo",
+                "subheading": "Kepulauan Nusa Tenggara, Indonesia.",
+                "image": "image3",
+                "iap": true
+            },
+            {
+                "id": 36,
+                "tagline": "Island",
+                "name": "Nusa Penida",
+                "subheading": "Bali, Indonesia.",
+                "image": "image4",
+                "iap": false
+            },
+            
+            {
+                "id": 37,
+                "tagline": "Beach",
+                "name": "Pink Beach Lombok",
+                "subheading": "Lombok, Indonesia.",
+                "image": "image5",
+                "iap": true
+            },
+            
+            {
+                "id": 38,
+                "tagline": "Island",
+                "name": "Gili Trawangan",
+                "subheading": "Barat Laut Lombok, Indonesia.",
+                "image": "image7",
+                "iap": true
+            },
+            {
+                "id": 39,
+                "tagline": "Sea",
+                "name": "Diving",
+                "subheading": "Dive Resot, Raja Ampat, Indonesia",
+                "image": "image8",
+                "iap": false
+            },
+            {
+                "id": 30,
+                "tagline": "Island",
+                "name": "Pulau Seribu",
+                "subheading": "Jakarta Utara, Indonesia.",
+                "image": "image10",
+                "iap": false
+            }
+        ]
 	},
 	{
         "id": 4,
 		"type": "mediumTable",
-		"title": "This Week's Favorites",
-		"subtitle": "",
+		"title": "Most Visited",
+		"subtitle": "The most visited in the week",
 		"items": [
-			{
-				"id": 21,
-				"tagline": "Featured",
-				"name": "Strokey",
-				"subheading": "You'll never stroke the same way again.",
-				"image": "iOS1",
-				"iap": true
-			},
-			{
-				"id": 22,
-				"tagline": "See it in dark mode",
-				"name": "Smartwhirl",
-				"subheading": "People who love whirling just like you!",
-				"image": "iOS2",
-				"iap": false
-			},
-			{
-				"id": 23,
-				"tagline": "New update",
-				"name": "Professorify",
-				"subheading": "Introducing the world’s first experienced professor.",
-				"image": "iOS3",
-				"iap": true
-			},
-			{
-				"id": 24,
-				"tagline": "Featured",
-				"name": "SituationMe",
-				"subheading": "Your Situation. Dedicated.",
-				"image": "iOS4",
-				"iap": false
-			},
-			{
-				"id": 25,
-				"tagline": "New update",
-				"name": "Squeally",
-				"subheading": "Motivate your niche in the squealing ecosystem.",
-				"image": "iOS5",
-				"iap": true
-			},
-			{
-				"id": 26,
-				"tagline": "See it in dark mode",
-				"name": "youplayer",
-				"subheading": "Harmonize your inner player.",
-				"image": "iOS6",
-				"iap": false
-			},
-			{
-				"id": 27,
-				"tagline": "Must-have app",
-				"name": "Spellnow",
-				"subheading": "Dare to spell the smart way.",
-				"image": "iOS7",
-				"iap": true
-			},
-			{
-				"id": 28,
-				"tagline": "New update",
-				"name": "S.A.C.K.",
-				"subheading": "Sack people online using our cloud software.",
-				"image": "iOS8",
-				"iap": false
-			},
-			{
-				"id": 29,
-				"tagline": "See it in dark mode",
-				"name": "Yodely",
-				"subheading": "You like to yodel. Yodely does too.",
-				"image": "iOS9",
-				"iap": true
-			}
-		]
+            {
+                "id": 41,
+                "tagline": "Sea",
+                "name": "Diving",
+                "subheading": "Dive Resot, Raja Ampat, Indonesia",
+                "image": "image8",
+                "iap": false
+            },
+            {
+                "id": 42,
+                "tagline": "Island",
+                "name": "Kepulauan Raja Ampat",
+                "subheading": "Papua Barat, Indonesia.",
+                "image": "image6",
+                "iap": false
+            },
+            {
+                "id": 43,
+                "tagline": "Island",
+                "name": "Pulau Komodo",
+                "subheading": "Kepulauan Nusa Tenggara, Indonesia.",
+                "image": "image3",
+                "iap": true
+            },
+            {
+                "id": 44,
+                "tagline": "Island",
+                "name": "Pulo Cinta",
+                "subheading": "Gorontalo, Sulawesi, Indonesia",
+                "image": "image9",
+                "iap": true
+            },
+            {
+                "id": 45,
+                "tagline": "Island",
+                "name": "Labuan Bajo",
+                "subheading": "Nusa Tenggara Timur, Indonesia.",
+                "image": "image1",
+                "iap": true
+            },
+            {
+                "id": 46,
+                "tagline": "Island",
+                "name": "Kepulauan Kei",
+                "subheading": "Maluku, Indonesia.",
+                "image": "image2",
+                "iap": false
+            },
+            {
+                "id": 47,
+                "tagline": "Island",
+                "name": "Nusa Penida",
+                "subheading": "Bali, Indonesia.",
+                "image": "image4",
+                "iap": false
+            },
+            
+            {
+                "id": 48,
+                "tagline": "Beach",
+                "name": "Pink Beach Lombok",
+                "subheading": "Lombok, Indonesia.",
+                "image": "image5",
+                "iap": true
+            },
+            {
+                "id": 49,
+                "tagline": "Island",
+                "name": "Gili Trawangan",
+                "subheading": "Barat Laut Lombok, Indonesia.",
+                "image": "image7",
+                "iap": true
+            },
+            {
+                "id": 50,
+                "tagline": "Island",
+                "name": "Pulau Seribu",
+                "subheading": "Jakarta Utara, Indonesia.",
+                "image": "image10",
+                "iap": false
+            }
+        ]
 	},
 	{
         "id": 5,
 		"type": "mediumTable",
-		"title": "Top Paid Apps",
-		"subtitle": "",
+		"title": "Beautiful Places",
+		"subtitle": "These places are recommended for you",
 		"items": [
-			{
-				"id": 41,
-				"tagline": "Featured",
-				"name": "Strokey",
-				"subheading": "You'll never stroke the same way again.",
-				"image": "iOS1",
-				"iap": true
-			},
-			{
-				"id": 42,
-				"tagline": "See it in dark mode",
-				"name": "Smartwhirl",
-				"subheading": "People who love whirling just like you!",
-				"image": "iOS2",
-				"iap": false
-			},
-			{
-				"id": 43,
-				"tagline": "New update",
-				"name": "Professorify",
-				"subheading": "Introducing the world’s first experienced professor.",
-				"image": "iOS3",
-				"iap": true
-			},
-			{
-				"id": 44,
-				"tagline": "Featured",
-				"name": "SituationMe",
-				"subheading": "Your Situation. Dedicated.",
-				"image": "iOS4",
-				"iap": false
-			},
-			{
-				"id": 45,
-				"tagline": "New update",
-				"name": "Squeally",
-				"subheading": "Motivate your niche in the squealing ecosystem.",
-				"image": "iOS5",
-				"iap": true
-			},
-			{
-				"id": 46,
-				"tagline": "See it in dark mode",
-				"name": "youplayer",
-				"subheading": "Harmonize your inner player.",
-				"image": "iOS6",
-				"iap": false
-			},
-			{
-				"id": 47,
-				"tagline": "Must-have app",
-				"name": "Spellnow",
-				"subheading": "Dare to spell the smart way.",
-				"image": "iOS7",
-				"iap": true
-			},
-			{
-				"id": 48,
-				"tagline": "New update",
-				"name": "S.A.C.K.",
-				"subheading": "Sack people online using our cloud software.",
-				"image": "iOS8",
-				"iap": false
-			},
-			{
-				"id": 49,
-				"tagline": "See it in dark mode",
-				"name": "Yodely",
-				"subheading": "You like to yodel. Yodely does too.",
-				"image": "iOS9",
-				"iap": true
-			}
-		]
+            {
+                "id": 51,
+                "tagline": "Island",
+                "name": "Labuan Bajo",
+                "subheading": "Nusa Tenggara Timur, Indonesia.",
+                "image": "image1",
+                "iap": true
+            },
+            {
+                "id": 52,
+                "tagline": "Island",
+                "name": "Kepulauan Kei",
+                "subheading": "Maluku, Indonesia.",
+                "image": "image2",
+                "iap": false
+            },
+            {
+                "id": 53,
+                "tagline": "Island",
+                "name": "Pulau Komodo",
+                "subheading": "Kepulauan Nusa Tenggara, Indonesia.",
+                "image": "image3",
+                "iap": true
+            },
+            {
+                "id": 54,
+                "tagline": "Island",
+                "name": "Nusa Penida",
+                "subheading": "Bali, Indonesia.",
+                "image": "image4",
+                "iap": false
+            },
+            {
+                "id": 55,
+                "tagline": "Beach",
+                "name": "Pink Beach Lombok",
+                "subheading": "Lombok, Indonesia.",
+                "image": "image5",
+                "iap": true
+            },
+            {
+                "id": 56,
+                "tagline": "Island",
+                "name": "Kepulauan Raja Ampat",
+                "subheading": "Papua Barat, Indonesia.",
+                "image": "image6",
+                "iap": false
+            },
+            {
+                "id": 57,
+                "tagline": "Island",
+                "name": "Gili Trawangan",
+                "subheading": "Barat Laut Lombok, Indonesia.",
+                "image": "image7",
+                "iap": true
+            },
+            {
+                "id": 58,
+                "tagline": "Sea",
+                "name": "Diving",
+                "subheading": "Dive Resot, Raja Ampat, Indonesia",
+                "image": "image8",
+                "iap": false
+            },
+            {
+                "id": 59,
+                "tagline": "Island",
+                "name": "Pulo Cinta",
+                "subheading": "Gorontalo, Sulawesi, Indonesia",
+                "image": "image9",
+                "iap": true
+            },
+            {
+                "id": 60,
+                "tagline": "Island",
+                "name": "Pulau Seribu",
+                "subheading": "Jakarta Utara, Indonesia.",
+                "image": "image10",
+                "iap": false
+            }
+        ]
 	},
-	{
+    {
         "id": 6,
-		"type": "mediumTable",
-		"title": "Top Free Apps",
-		"subtitle": "",
-		"items": [
-			{
-				"id": 51,
-				"tagline": "Featured",
-				"name": "Strokey",
-				"subheading": "You'll never stroke the same way again.",
-				"image": "iOS1",
-				"iap": true
-			},
-			{
-				"id": 52,
-				"tagline": "See it in dark mode",
-				"name": "Smartwhirl",
-				"subheading": "People who love whirling just like you!",
-				"image": "iOS2",
-				"iap": false
-			},
-			{
-				"id": 53,
-				"tagline": "New update",
-				"name": "Professorify",
-				"subheading": "Introducing the world’s first experienced professor.",
-				"image": "iOS3",
-				"iap": true
-			},
-			{
-				"id": 54,
-				"tagline": "Featured",
-				"name": "SituationMe",
-				"subheading": "Your Situation. Dedicated.",
-				"image": "iOS4",
-				"iap": false
-			},
-			{
-				"id": 55,
-				"tagline": "New update",
-				"name": "Squeally",
-				"subheading": "Motivate your niche in the squealing ecosystem.",
-				"image": "iOS5",
-				"iap": true
-			},
-			{
-				"id": 56,
-				"tagline": "See it in dark mode",
-				"name": "youplayer",
-				"subheading": "Harmonize your inner player.",
-				"image": "iOS6",
-				"iap": false
-			},
-			{
-				"id": 57,
-				"tagline": "Must-have app",
-				"name": "Spellnow",
-				"subheading": "Dare to spell the smart way.",
-				"image": "iOS7",
-				"iap": true
-			},
-			{
-				"id": 58,
-				"tagline": "New update",
-				"name": "S.A.C.K.",
-				"subheading": "Sack people online using our cloud software.",
-				"image": "iOS8",
-				"iap": false
-			},
-			{
-				"id": 59,
-				"tagline": "See it in dark mode",
-				"name": "Yodely",
-				"subheading": "You like to yodel. Yodely does too.",
-				"image": "iOS9",
-				"iap": true
-			}
-		]
-	},
-	{
-        "id": 7,
-		"type": "featured",
-		"title": "",
-		"subtitle": "",
-		"items": [
-			{
-				"id": 61,
-				"tagline": "Featured",
-				"name": "Strokey",
-				"subheading": "You'll never stroke the same way again.",
-				"image": "image1",
-				"iap": true
-			},
-			{
-				"id": 62,
-				"tagline": "See it in dark mode",
-				"name": "Smartwhirl",
-				"subheading": "People who love whirling just like you!",
-				"image": "image2",
-				"iap": false
-			},
-			{
-				"id": 63,
-				"tagline": "New update",
-				"name": "Professorify",
-				"subheading": "Introducing the world’s first experienced professor.",
-				"image": "image3",
-				"iap": true
-			},
-			{
-				"id": 64,
-				"tagline": "Featured",
-				"name": "SituationMe",
-				"subheading": "Your Situation. Dedicated.",
-				"image": "image4",
-				"iap": false
-			},
-			{
-				"id": 65,
-				"tagline": "New update",
-				"name": "Squeally",
-				"subheading": "Motivate your niche in the squealing ecosystem.",
-				"image": "image5",
-				"iap": true
-			},
-			{
-				"id": 66,
-				"tagline": "See it in dark mode",
-				"name": "youplayer",
-				"subheading": "Harmonize your inner player.",
-				"image": "image6",
-				"iap": false
-			},
-			{
-				"id": 67,
-				"tagline": "Must-have app",
-				"name": "Spellnow",
-				"subheading": "Dare to spell the smart way.",
-				"image": "image7",
-				"iap": true
-			},
-			{
-				"id": 68,
-				"tagline": "New update",
-				"name": "S.A.C.K.",
-				"subheading": "Sack people online using our cloud software.",
-				"image": "image8",
-				"iap": false
-			},
-			{
-				"id": 69,
-				"tagline": "See it in dark mode",
-				"name": "Yodely",
-				"subheading": "You like to yodel. Yodely does too.",
-				"image": "image9",
-				"iap": true
-			},
-			{
-				"id": 70,
-				"tagline": "New update",
-				"name": "Tipable",
-				"subheading": "Manage your tips like never before.",
-				"image": "image10",
-				"iap": false
-			}
-		]
-	}
+        "type": "Feature",
+        "title": "",
+        "subtitle": "",
+        "items": [
+            {
+                "id": 61,
+                "tagline": "Sea",
+                "name": "Diving",
+                "subheading": "Dive Resot, Raja Ampat, Indonesia",
+                "image": "image8",
+                "iap": false
+            },
+            {
+                "id": 62,
+                "tagline": "Island",
+                "name": "Kepulauan Raja Ampat",
+                "subheading": "Papua Barat, Indonesia.",
+                "image": "image6",
+                "iap": false
+            },
+            {
+                "id": 63,
+                "tagline": "Island",
+                "name": "Pulau Komodo",
+                "subheading": "Kepulauan Nusa Tenggara, Indonesia.",
+                "image": "image3",
+                "iap": true
+            },
+            {
+                "id": 64,
+                "tagline": "Island",
+                "name": "Pulo Cinta",
+                "subheading": "Gorontalo, Sulawesi, Indonesia",
+                "image": "image9",
+                "iap": true
+            },
+            {
+                "id": 65,
+                "tagline": "Island",
+                "name": "Labuan Bajo",
+                "subheading": "Nusa Tenggara Timur, Indonesia.",
+                "image": "image1",
+                "iap": true
+            },
+            {
+                "id": 66,
+                "tagline": "Island",
+                "name": "Kepulauan Kei",
+                "subheading": "Maluku, Indonesia.",
+                "image": "image2",
+                "iap": false
+            },
+            {
+                "id": 67,
+                "tagline": "Island",
+                "name": "Nusa Penida",
+                "subheading": "Bali, Indonesia.",
+                "image": "image4",
+                "iap": false
+            },
+            
+            {
+                "id": 68,
+                "tagline": "Beach",
+                "name": "Pink Beach Lombok",
+                "subheading": "Lombok, Indonesia.",
+                "image": "image5",
+                "iap": true
+            },
+            {
+                "id": 69,
+                "tagline": "Island",
+                "name": "Gili Trawangan",
+                "subheading": "Barat Laut Lombok, Indonesia.",
+                "image": "image7",
+                "iap": true
+            },
+            {
+                "id": 70,
+                "tagline": "Island",
+                "name": "Pulau Seribu",
+                "subheading": "Jakarta Utara, Indonesia.",
+                "image": "image10",
+                "iap": false
+            }
+        ]
+    }
 ]

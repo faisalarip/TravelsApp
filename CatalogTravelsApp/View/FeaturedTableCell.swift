@@ -15,6 +15,7 @@ class FeaturedTableCell: UICollectionViewCell, ConfiguringCell {
     private let name = UILabel()
     private let subheading = UILabel()
     private let imageView = UIImageView()
+    private let favoriteButton = UIButton(type: .custom)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -36,15 +37,34 @@ class FeaturedTableCell: UICollectionViewCell, ConfiguringCell {
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
         
-        let stackView = UIStackView(arrangedSubviews: [separator, tagline, name, subheading, imageView])
+        let favoriteImage = UIImage(systemName: "star", withConfiguration: UIImage.SymbolConfiguration(weight: .regular))?.withTintColor(.systemYellow, renderingMode: .alwaysOriginal)
+                
+        favoriteButton.setImage(favoriteImage, for: .normal)
+        favoriteButton.imageView?.contentMode = .scaleAspectFill
+        favoriteButton.contentHorizontalAlignment = .fill
+        favoriteButton.contentVerticalAlignment = .fill
+        
+        let firstStackView = UIStackView(arrangedSubviews: [name, favoriteButton])
+        firstStackView.axis = .horizontal
+        firstStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let secondStackView = UIStackView(arrangedSubviews: [tagline, firstStackView, subheading])
+        secondStackView.translatesAutoresizingMaskIntoConstraints = false
+        secondStackView.axis = .vertical
+        secondStackView.spacing = 10
+        
+        let stackView = UIStackView(arrangedSubviews: [separator, secondStackView, imageView])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.spacing = 10
         
         contentView.addSubview(stackView)
         
         NSLayoutConstraint.activate([
             separator.heightAnchor.constraint(equalToConstant: 1),
+            
+            favoriteButton.widthAnchor.constraint(equalToConstant: 25),
+            favoriteButton.heightAnchor.constraint(equalToConstant: 25),
+            firstStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
@@ -53,7 +73,7 @@ class FeaturedTableCell: UICollectionViewCell, ConfiguringCell {
         ])
         
         stackView.setCustomSpacing(20, after: separator)
-        stackView.setCustomSpacing(15, after: subheading)
+        stackView.setCustomSpacing(15, after: secondStackView)
     }
     
     required init?(coder: NSCoder) {

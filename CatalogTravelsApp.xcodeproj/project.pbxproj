@@ -149,9 +149,9 @@
 		1A022B22258EE5AE003C9C88 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				1A022B28258EE9C6003C9C88 /* TravelsData.json */,
 				1A022B37258EF476003C9C88 /* App.swift */,
 				1A022B3C258F94B8003C9C88 /* Section.swift */,
+				1A022B28258EE9C6003C9C88 /* TravelsData.json */,
 			);
 			path = Models;
 			sourceTree = "<group>";

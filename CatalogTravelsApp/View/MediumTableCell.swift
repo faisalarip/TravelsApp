@@ -24,7 +24,7 @@ class MediumTableCell: UICollectionViewCell, ConfiguringCell {
         subtitle.font = UIFont.preferredFont(forTextStyle: .subheadline)
         subtitle.textColor = .secondaryLabel
         
-        imageView.layer.cornerRadius = 15
+        imageView.layer.cornerRadius = 10
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
         imageView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
@@ -41,13 +41,16 @@ class MediumTableCell: UICollectionViewCell, ConfiguringCell {
         contentView.addSubview(stackview)
         
         NSLayoutConstraint.activate([
+
+            imageView.heightAnchor.constraint(equalToConstant: 70),
+            imageView.widthAnchor.constraint(equalToConstant: 70),
             
             stackview.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             stackview.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            stackview.topAnchor.constraint(equalTo: contentView.topAnchor),
+            stackview.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             stackview.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
-                
+        
     }
     
     required init?(coder: NSCoder) {

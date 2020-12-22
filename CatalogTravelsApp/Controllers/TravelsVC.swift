@@ -16,7 +16,6 @@ class TravelsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.        
         
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCompositionlayout())
         collectionView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -24,9 +23,9 @@ class TravelsVC: UIViewController {
         guard let collectView = collectionView else { return }
         view.addSubview(collectView)
         
-        registeredCells()
-        diffableDataSource()
-        reloadDiffableData()
+        self.registeredCells()
+        self.diffableDataSource()
+        self.appendingDiffableDataSourceSnapshot()
         
     }
     
@@ -40,7 +39,7 @@ class TravelsVC: UIViewController {
     private func diffableDataSource() {
         guard let collectView = collectionView else { return }
         
-        dataSource = UICollectionViewDiffableDataSource<Section, App>(collectionView: collectView, cellProvider: { (collectionView, indexPath, app) in
+        dataSource = UICollectionViewDiffableDataSource<Section, App>(collectionView: collectView, cellProvider: { (_, indexPath, app) in
             
             switch self.sections[indexPath.section].type {
             case "smallTable":
@@ -53,6 +52,7 @@ class TravelsVC: UIViewController {
             
         })
         
+        /// Configuring supplementary view provider for section header
         dataSource?.supplementaryViewProvider = { collectionView, kind, IndexPath in
             
             guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeaderReusableView.identifier, for: IndexPath) as? SectionHeaderReusableView else { fatalError("Unable to dequeu") }
@@ -60,17 +60,19 @@ class TravelsVC: UIViewController {
             guard let firstItem = self.dataSource?.itemIdentifier(for: IndexPath),
                   let section = self.dataSource?.snapshot().sectionIdentifier(containingItem: firstItem) else { return nil }
             
-            if section.title.isEmpty { return nil }
+            if section.title.isEmpty {
+                return nil
+            }
             
             sectionHeader.title.text = section.title
             sectionHeader.subtitle.text = section.subtitle
-            
+
             return sectionHeader
         }
         
     }
     
-    private func reloadDiffableData() {
+    private func appendingDiffableDataSourceSnapshot() {
         
         var snapshot = NSDiffableDataSourceSnapshot<Section, App>()
         snapshot.appendSections(sections)

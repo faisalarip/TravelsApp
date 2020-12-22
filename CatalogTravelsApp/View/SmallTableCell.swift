@@ -15,10 +15,10 @@ class SmallTableCell: UICollectionViewCell, ConfiguringCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-
+        
         name.font = UIFont.preferredFont(forTextStyle: .headline)
         name.textColor = .label
-        
+                
         imageView.layer.cornerRadius = 4
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
@@ -32,7 +32,7 @@ class SmallTableCell: UICollectionViewCell, ConfiguringCell {
         
         NSLayoutConstraint.activate([
             stackview.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            stackview.topAnchor.constraint(equalTo: contentView.topAnchor),
+            stackview.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
             stackview.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
     }
