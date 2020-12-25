@@ -9,37 +9,62 @@ import UIKit
 
 class SmallTableCell: UICollectionViewCell, ConfiguringCell {
     static var reuseableIdentifier: String = "SmallTableCell"
-    
-    let name = UILabel()
+        
     let imageView = UIImageView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        name.font = UIFont.preferredFont(forTextStyle: .headline)
-        name.textColor = .label
-                
-        imageView.layer.cornerRadius = 4
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.layer.cornerRadius = 8
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
         
-        let stackview = UIStackView(arrangedSubviews: [imageView, name])
-        stackview.translatesAutoresizingMaskIntoConstraints = false
-        stackview.alignment = .center
-        stackview.axis = .horizontal
-        stackview.spacing = 10
-        contentView.addSubview(stackview)
-        
+        contentView.addSubview(imageView)
+
         NSLayoutConstraint.activate([
-            stackview.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            stackview.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
-            stackview.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            imageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
+        
     }
     
+    func textToImage(drawText text: String, inImage image: UIImage, atPoint point: CGPoint?) -> UIImage {
+        let textColor = UIColor.white
+        let textFont = UIFont.systemFont(ofSize: 11, weight: .semibold)
+        let textStyle = NSMutableParagraphStyle()
+        textStyle.alignment = .center
+        
+        let scale = UIScreen.main.scale
+        UIGraphicsBeginImageContextWithOptions(image.size, false, scale)
+
+        let textFontAttributes = [
+            NSAttributedString.Key.font: textFont,
+            NSAttributedString.Key.foregroundColor: textColor,
+            NSAttributedString.Key.paragraphStyle: textStyle
+            ] as [NSAttributedString.Key : Any]
+        
+        let imageWithOpacity = image.withAlpha(0.5)
+        imageWithOpacity.draw(in: CGRect(origin: CGPoint.zero, size: imageWithOpacity.size))
+                
+        //vertically center (depending on font)
+        let text_h = textFont.lineHeight
+        let text_y = (imageWithOpacity.size.height-text_h)/2
+        let text_rect = CGRect(x: 0, y: text_y, width: imageWithOpacity.size.width, height: text_h)
+        text.draw(in: text_rect.integral, withAttributes: textFontAttributes)
+        
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage!
+    }
+
+    
     func configureCellLayout(with app: App) {
-        name.text = app.name
-        imageView.image = UIImage(named: app.image)
+        guard let image = UIImage(named: app.image) else { return }
+        imageView.image = textToImage(drawText: app.name, inImage: image, atPoint: nil)
     }
     
     required init?(coder: NSCoder) {

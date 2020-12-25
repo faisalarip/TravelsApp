@@ -23,6 +23,7 @@
 		1A022B4825904D4C003C9C88 /* SmallTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A022B4725904D4C003C9C88 /* SmallTableCell.swift */; };
 		1A022B5625906779003C9C88 /* SectionHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A022B5525906778003C9C88 /* SectionHeaderReusableView.swift */; };
 		1A022B5E2590DAD4003C9C88 /* MediumTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A022B5D2590DAD3003C9C88 /* MediumTableCell.swift */; };
+		1A022B6C2592F0FA003C9C88 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A022B6B2592F0FA003C9C88 /* Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		1A022B4725904D4C003C9C88 /* SmallTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallTableCell.swift; sourceTree = "<group>"; };
 		1A022B5525906778003C9C88 /* SectionHeaderReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderReusableView.swift; sourceTree = "<group>"; };
 		1A022B5D2590DAD3003C9C88 /* MediumTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumTableCell.swift; sourceTree = "<group>"; };
+		1A022B6B2592F0FA003C9C88 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +190,7 @@
 				1A022AEF258EE592003C9C88 /* AppDelegate.swift */,
 				1A022AF1258EE592003C9C88 /* SceneDelegate.swift */,
 				1A022B2D258EF20F003C9C88 /* Bundle-Decodable.swift */,
+				1A022B6B2592F0FA003C9C88 /* Extension.swift */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				1A022B5625906779003C9C88 /* SectionHeaderReusableView.swift in Sources */,
 				1A022AF4258EE592003C9C88 /* TravelsVC.swift in Sources */,
 				1A022AF0258EE592003C9C88 /* AppDelegate.swift in Sources */,
+				1A022B6C2592F0FA003C9C88 /* Extension.swift in Sources */,
 				1A022AF2258EE592003C9C88 /* SceneDelegate.swift in Sources */,
 				1A022B3D258F94B8003C9C88 /* Section.swift in Sources */,
 				1A022B38258EF476003C9C88 /* App.swift in Sources */,

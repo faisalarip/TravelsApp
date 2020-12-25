@@ -120,6 +120,11 @@ extension TravelsVC {
         
         dataSource?.apply(snapshot)
     }
+    
+    @objc private func didTapFavoriteButton(_ sender: UIButton) {
+        print("Fav button has tapped")
+    }
+    
 }
 
 // MARK: - Compositional Layout Setup
@@ -162,11 +167,11 @@ extension TravelsVC {
     private func createSmallTableLayout(using section: Section) -> NSCollectionLayoutSection {
         
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                              heightDimension: .fractionalHeight(0.25))
+                                              heightDimension: .fractionalHeight(0.30))
         let itemLayout = NSCollectionLayoutItem(layoutSize: itemSize)
         itemLayout.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.75),
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.50),
                                                heightDimension: .estimated(200))
         let groupLayout = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
                                                            subitems: [itemLayout])
@@ -195,7 +200,10 @@ extension TravelsVC: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         dismiss(animated: true, completion: nil)
-        print("Selected item at \(sections[indexPath.section].items[indexPath.row])")
+        print("Selected item at \(sections[indexPath.section].items[indexPath.row])")        
+        let section = sections[indexPath.section]
+        let _ = section.items[indexPath.row]
+        
     }
     
 }
