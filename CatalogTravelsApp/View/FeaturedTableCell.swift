@@ -12,7 +12,7 @@ class FeaturedTableCell: UICollectionViewCell, ConfiguringCell {
     static var reuseableIdentifier: String = "TopPopularCell"
     
     var completion: ((Result<Section, Error>) -> Void)?
-    var app: App?
+    var travel: Travel?
     
     let tagline = UILabel()
     let name = UILabel()
@@ -20,7 +20,6 @@ class FeaturedTableCell: UICollectionViewCell, ConfiguringCell {
     let imageView = UIImageView()
     let favoriteButton = UIButton(type: .custom)
     let favoriteImage = UIImage(systemName: "heart", withConfiguration: UIImage.SymbolConfiguration(weight: .regular))?.withTintColor(.systemYellow, renderingMode: .alwaysOriginal)
-    let favoriteImageFill = UIImage(systemName: "heart.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .regular))?.withTintColor(.systemYellow, renderingMode: .alwaysOriginal)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -41,14 +40,12 @@ class FeaturedTableCell: UICollectionViewCell, ConfiguringCell {
         imageView.layer.cornerRadius = 8
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
-        
-        favoriteButton.isSelected = false
+                
         favoriteButton.isUserInteractionEnabled = true
         favoriteButton.setImage(favoriteImage, for: .normal)
         favoriteButton.imageView?.contentMode = .scaleAspectFill
         favoriteButton.contentHorizontalAlignment = .fill
         favoriteButton.contentVerticalAlignment = .fill
-        favoriteButton.addTarget(self, action: #selector(didTapFavoriteButton(_:)), for: .touchUpInside)
         
         let firstStackView = UIStackView(arrangedSubviews: [name, favoriteButton])
         firstStackView.axis = .horizontal
@@ -70,7 +67,7 @@ class FeaturedTableCell: UICollectionViewCell, ConfiguringCell {
             
             favoriteButton.widthAnchor.constraint(equalToConstant: 28),
             favoriteButton.heightAnchor.constraint(equalToConstant: 28),
-            favoriteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+//            favoriteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
@@ -82,28 +79,18 @@ class FeaturedTableCell: UICollectionViewCell, ConfiguringCell {
         stackView.setCustomSpacing(15, after: secondStackView)
     }
     
-    @objc private func didTapFavoriteButton(_ sender: UIButton) {
-        print("Fav button has tapped \(sender.isSelected)")
-        
-        if !sender.isSelected {
-            sender.isSelected = true
-            sender.zoomInWithEasing(duration: 0.3, easingOffset: 0.3)
-            sender.setImage(favoriteImageFill, for: .selected)
-        } else {
-            sender.isSelected = false
-            sender.zoomOutWithEasing(duration: 0.3, easingOffset: 0.3)
-            sender.setImage(favoriteImage, for: .selected)
-        }
-        
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        favoriteButton.isSelected = false
     }
     
-    func configureCellLayout(with app: App) {
-        self.app = app
+    func configureCellLayout(with travel: Travel) {
+        self.travel = travel
         
-        tagline.text = app.tagline
-        name.text = app.name
-        subheading.text = app.subheading
-        imageView.image = UIImage(named: app.image)
+        tagline.text = travel.tagline
+        name.text = travel.name
+        subheading.text = travel.subheading
+        imageView.image = UIImage(named: travel.image)
     }
     
     required init?(coder: NSCoder) {

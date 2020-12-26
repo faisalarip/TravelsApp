@@ -31,7 +31,7 @@ class SmallTableCell: UICollectionViewCell, ConfiguringCell {
         
     }
     
-    func textToImage(drawText text: String, inImage image: UIImage, atPoint point: CGPoint?) -> UIImage {
+    private func textToImage(drawText text: String, inImage image: UIImage, atPoint point: CGPoint?) -> UIImage {
         let textColor = UIColor.white
         let textFont = UIFont.systemFont(ofSize: 11, weight: .semibold)
         let textStyle = NSMutableParagraphStyle()
@@ -46,7 +46,7 @@ class SmallTableCell: UICollectionViewCell, ConfiguringCell {
             NSAttributedString.Key.paragraphStyle: textStyle
             ] as [NSAttributedString.Key : Any]
         
-        let imageWithOpacity = image.withAlpha(0.5)
+        let imageWithOpacity = image.withAlpha(0.8)
         imageWithOpacity.draw(in: CGRect(origin: CGPoint.zero, size: imageWithOpacity.size))
                 
         //vertically center (depending on font)
@@ -62,9 +62,9 @@ class SmallTableCell: UICollectionViewCell, ConfiguringCell {
     }
 
     
-    func configureCellLayout(with app: App) {
-        guard let image = UIImage(named: app.image) else { return }
-        imageView.image = textToImage(drawText: app.name, inImage: image, atPoint: nil)
+    func configureCellLayout(with travel: Travel) {
+        guard let image = UIImage(named: travel.image) else { return }
+        imageView.image = textToImage(drawText: travel.name, inImage: image, atPoint: nil)
     }
     
     required init?(coder: NSCoder) {

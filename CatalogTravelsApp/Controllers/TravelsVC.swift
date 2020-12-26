@@ -12,7 +12,11 @@ class TravelsVC: UIViewController {
     let sections = Bundle.main.decode([Section].self, from: "TravelsData.json")
     
     var collectionView: UICollectionView? = nil
-    var dataSource: UICollectionViewDiffableDataSource<Section, App>? = nil
+    var dataSource: UICollectionViewDiffableDataSource<Section, Travel>? = nil
+    var hasTapped = [Int]()
+    
+    private let favoriteImage = UIImage(systemName: "heart", withConfiguration: UIImage.SymbolConfiguration(weight: .regular))?.withTintColor(.systemYellow, renderingMode: .alwaysOriginal)
+    private let favoriteImageFill = UIImage(systemName: "heart.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .regular))?.withTintColor(.systemYellow, renderingMode: .alwaysOriginal)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,9 +29,12 @@ class TravelsVC: UIViewController {
         view.addSubview(collectView)
         
         self.registeredCells()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
         self.diffableDataSource()
         self.appendingDiffableDataSourceSnapshot()
-        
     }
     
     private func registeredCells() {
@@ -37,11 +44,11 @@ class TravelsVC: UIViewController {
         collectionView?.register(MediumTableCell.self, forCellWithReuseIdentifier: MediumTableCell.reuseableIdentifier)
     }
     
-    private func configureCells<T: ConfiguringCell>(_ cellType: T.Type, with app: App, for indexPath: IndexPath) -> T {
+    private func configureCells<T: ConfiguringCell>(_ cellType: T.Type, with travel: Travel, for indexPath: IndexPath) -> T {
         
         guard let cell = collectionView?.dequeueReusableCell(withReuseIdentifier: cellType.reuseableIdentifier, for: indexPath) as? T else { fatalError("Unable dequeu cells") }
         
-        cell.configureCellLayout(with: app)
+        cell.configureCellLayout(with: travel)
         
         return cell
     }
@@ -57,7 +64,7 @@ class TravelsVC: UIViewController {
             case "mediumTable":
                 return self.createMediumTableLayout(using: section)
             default:
-                return self.createTopPopularLayout(using: section)
+                return self.createFeatureLayout(using: section)
             }
         }
         
@@ -68,6 +75,32 @@ class TravelsVC: UIViewController {
         return layout
     }
     
+    @objc private func didTapFavoriteButton(_ sender: UIButton) {
+                
+        let item = sections[0].items[sender.tag]
+        print(item)
+        
+        if sender.isSelected {
+            sender.zoomOutWithEasing(duration: 0.3, easingOffset: 0.3)
+            sender.setImage(favoriteImage, for: .selected)
+        } else {
+            let alertController = UIAlertController(title: "Confirm", message: "Would you like to added \(item.name) on a Favorite?", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+                print("These travel's has added to favorite")
+                sender.isSelected = true
+                self.hasTapped.append(sender.tag)
+                sender.zoomInWithEasing(duration: 0.3, easingOffset: 0.3)
+                sender.setImage(self.favoriteImageFill, for: .selected)
+            }))
+            alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
+                self.dismiss(animated: true, completion: nil)
+            }))
+            
+            self.present(alertController, animated: true, completion: nil)            
+        }
+        
+    }
+    
 }
 
 // MARK: - Diffable Data Source Setup
@@ -76,15 +109,28 @@ extension TravelsVC {
     private func diffableDataSource() {
         guard let collectView = collectionView else { return }
         
-        dataSource = UICollectionViewDiffableDataSource<Section, App>(collectionView: collectView, cellProvider: { (_, indexPath, app) in
-            
-            switch self.sections[indexPath.section].type {
+        dataSource = UICollectionViewDiffableDataSource<Section, Travel>(collectionView: collectView, cellProvider: { (_, indexPath, app) in
+            let section = self.sections[indexPath.section]
+            switch section.type {
             case "smallTable":
                 return self.configureCells(SmallTableCell.self, with: app, for: indexPath)
             case "mediumTable":
                 return self.configureCells(MediumTableCell.self, with: app, for: indexPath)
             default :
-                return self.configureCells(FeaturedTableCell.self, with: app, for: indexPath)
+                let featureCell = self.configureCells(FeaturedTableCell.self, with: app, for: indexPath)
+                print(self.hasTapped)
+                print(indexPath.row)
+                for n in self.hasTapped {
+                    if n == indexPath.row {
+                        print("Got a travel's \(section.items[indexPath.row])")
+                        featureCell.favoriteButton.isSelected = true
+                        featureCell.favoriteButton.zoomInWithEasing(duration: 0.3, easingOffset: 0.3)
+                        featureCell.favoriteButton.setImage(self.favoriteImageFill, for: .selected)
+                    }
+                }
+                featureCell.favoriteButton.tag = indexPath.row
+                featureCell.favoriteButton.addTarget(self, action: #selector(self.didTapFavoriteButton(_:)), for: .touchUpInside)                
+                return featureCell
             }
             
         })
@@ -111,7 +157,7 @@ extension TravelsVC {
     
     private func appendingDiffableDataSourceSnapshot() {
         
-        var snapshot = NSDiffableDataSourceSnapshot<Section, App>()
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Travel>()
         snapshot.appendSections(sections)
         
         for section in sections {
@@ -121,26 +167,22 @@ extension TravelsVC {
         dataSource?.apply(snapshot)
     }
     
-    @objc private func didTapFavoriteButton(_ sender: UIButton) {
-        print("Fav button has tapped")
-    }
-    
 }
 
 // MARK: - Compositional Layout Setup
 
 extension TravelsVC {
-    private func createTopPopularLayout(using section: Section) -> NSCollectionLayoutSection {
+    private func createFeatureLayout(using section: Section) -> NSCollectionLayoutSection {
         
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
         let itemLayout = NSCollectionLayoutItem(layoutSize: itemSize)
         itemLayout.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.90), heightDimension: .estimated(300))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.87), heightDimension: .estimated(300))
         let groupLayout = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [itemLayout])
         
         let layoutSection = NSCollectionLayoutSection(group: groupLayout)
-        layoutSection.orthogonalScrollingBehavior = .continuous
+        layoutSection.orthogonalScrollingBehavior = .continuousGroupLeadingBoundary
 
         return layoutSection
     }
@@ -151,7 +193,7 @@ extension TravelsVC {
         let itemLayout = NSCollectionLayoutItem(layoutSize: itemSize)
         itemLayout.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.90), heightDimension: .fractionalWidth(0.90))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.87), heightDimension: .fractionalWidth(0.87))
         let groupLayout = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [itemLayout])
         
         let sectionLayout = NSCollectionLayoutSection(group: groupLayout)
@@ -188,10 +230,11 @@ extension TravelsVC {
     
     private func createSectionHeaderLayout() -> NSCollectionLayoutBoundarySupplementaryItem {
         
-        let layoutSectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.90), heightDimension: .estimated(80))
+        let layoutSectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.87), heightDimension: .estimated(80))
         let layoutSectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: layoutSectionHeaderSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
         return layoutSectionHeader
     }
+    
 }
 
 // MARK: - Collection View Delegate
@@ -200,9 +243,7 @@ extension TravelsVC: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         dismiss(animated: true, completion: nil)
-        print("Selected item at \(sections[indexPath.section].items[indexPath.row])")        
-        let section = sections[indexPath.section]
-        let _ = section.items[indexPath.row]
+        print("Selected item at \(sections[indexPath.section].items[indexPath.row])\n \(indexPath.row)")
         
     }
     

@@ -9,14 +9,14 @@ import Foundation
 
 protocol ConfiguringCell {
     static var reuseableIdentifier: String { get }
-    func configureCellLayout(with app: App)
+    func configureCellLayout(with app: Travel)
 }
 
-struct App: Decodable, Hashable {
+struct Travel: Decodable, Hashable {
     let id: Int
     let tagline: String
     let name: String
     let subheading: String
     let image: String
-    let iap: Bool
+    let iap: Bool        
 }
