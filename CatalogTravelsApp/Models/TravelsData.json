@@ -7,7 +7,7 @@
 		"items": [
 			{
 				"id": 1,
-				"tagline": "Island",
+				"tagline": "Nature",
 				"name": "Labuan Bajo",
 				"subheading": "Nusa Tenggara Timur, Indonesia.",
 				"image": "image1",
@@ -23,7 +23,7 @@
 			},
 			{
 				"id": 3,
-				"tagline": "Island",
+				"tagline": "Nature",
 				"name": "Pulau Komodo",
 				"subheading": "Kepulauan Nusa Tenggara, Indonesia.",
 				"image": "image3",
@@ -47,7 +47,7 @@
 			},
 			{
 				"id": 6,
-				"tagline": "Island",
+				"tagline": "Nature",
 				"name": "Kepulauan Raja Ampat",
 				"subheading": "Papua Barat, Indonesia.",
 				"image": "image6",
@@ -96,7 +96,7 @@
             {
                 "id": 21,
                 "tagline": "",
-                "name": "Islands",
+                "name": "Mountain",
                 "subheading": "",
                 "image": "category1",
                 "iap": true
@@ -104,7 +104,7 @@
             {
                 "id": 22,
                 "tagline": "",
-                "name": "Naturess",
+                "name": "Natures",
                 "subheading": "",
                 "image": "category2",
                 "iap": false
@@ -112,7 +112,7 @@
             {
                 "id": 23,
                 "tagline": "",
-                "name": "Mountains",
+                "name": "Island",
                 "subheading": "",
                 "image": "category3",
                 "iap": true
@@ -143,7 +143,7 @@
 		"items": [
             {
                 "id": 31,
-                "tagline": "Island",
+                "tagline": "Beach",
                 "name": "Pulo Cinta",
                 "subheading": "Gorontalo, Sulawesi, Indonesia",
                 "image": "image9",
@@ -151,7 +151,7 @@
             },
             {
                 "id": 32,
-                "tagline": "Island",
+                "tagline": "Nature",
                 "name": "Labuan Bajo",
                 "subheading": "Nusa Tenggara Timur, Indonesia.",
                 "image": "image1",
@@ -167,7 +167,7 @@
             },
             {
                 "id": 34,
-                "tagline": "Island",
+                "tagline": "Nature",
                 "name": "Kepulauan Raja Ampat",
                 "subheading": "Papua Barat, Indonesia.",
                 "image": "image6",
@@ -175,7 +175,7 @@
             },
             {
                 "id": 35,
-                "tagline": "Island",
+                "tagline": "Nature",
                 "name": "Pulau Komodo",
                 "subheading": "Kepulauan Nusa Tenggara, Indonesia.",
                 "image": "image3",
@@ -183,7 +183,7 @@
             },
             {
                 "id": 36,
-                "tagline": "Island",
+                "tagline": "Nature",
                 "name": "Nusa Penida",
                 "subheading": "Bali, Indonesia.",
                 "image": "image4",
@@ -241,7 +241,7 @@
             },
             {
                 "id": 42,
-                "tagline": "Island",
+                "tagline": "Nature",
                 "name": "Kepulauan Raja Ampat",
                 "subheading": "Papua Barat, Indonesia.",
                 "image": "image6",
@@ -249,7 +249,7 @@
             },
             {
                 "id": 43,
-                "tagline": "Island",
+                "tagline": "Nature",
                 "name": "Pulau Komodo",
                 "subheading": "Kepulauan Nusa Tenggara, Indonesia.",
                 "image": "image3",
@@ -257,7 +257,7 @@
             },
             {
                 "id": 44,
-                "tagline": "Island",
+                "tagline": "Beach",
                 "name": "Pulo Cinta",
                 "subheading": "Gorontalo, Sulawesi, Indonesia",
                 "image": "image9",
@@ -265,7 +265,7 @@
             },
             {
                 "id": 45,
-                "tagline": "Island",
+                "tagline": "Nature",
                 "name": "Labuan Bajo",
                 "subheading": "Nusa Tenggara Timur, Indonesia.",
                 "image": "image1",
@@ -418,7 +418,7 @@
             },
             {
                 "id": 62,
-                "tagline": "Island",
+                "tagline": "Nature",
                 "name": "Kepulauan Raja Ampat",
                 "subheading": "Papua Barat, Indonesia.",
                 "image": "image6",
@@ -426,7 +426,7 @@
             },
             {
                 "id": 63,
-                "tagline": "Island",
+                "tagline": "Nature",
                 "name": "Pulau Komodo",
                 "subheading": "Kepulauan Nusa Tenggara, Indonesia.",
                 "image": "image3",
@@ -442,7 +442,7 @@
             },
             {
                 "id": 65,
-                "tagline": "Island",
+                "tagline": "Nature",
                 "name": "Labuan Bajo",
                 "subheading": "Nusa Tenggara Timur, Indonesia.",
                 "image": "image1",
@@ -458,7 +458,7 @@
             },
             {
                 "id": 67,
-                "tagline": "Island",
+                "tagline": "Nature",
                 "name": "Nusa Penida",
                 "subheading": "Bali, Indonesia.",
                 "image": "image4",

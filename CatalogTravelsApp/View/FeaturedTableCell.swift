@@ -67,7 +67,7 @@ class FeaturedTableCell: UICollectionViewCell, ConfiguringCell {
             
             favoriteButton.widthAnchor.constraint(equalToConstant: 28),
             favoriteButton.heightAnchor.constraint(equalToConstant: 28),
-//            favoriteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+//            firstStackView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -20),
             
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),

@@ -15,7 +15,7 @@ class MediumTableCell: UICollectionViewCell, ConfiguringCell {
     let subtitle = UILabel()
     let imageView = UIImageView()
     let shareButton = UIButton()
-    let shareImage = UIImage(systemName: "arrowshape.turn.up.right.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .light))?.withTintColor(.systemYellow, renderingMode: .alwaysOriginal)
+    let shareImage = UIImage(systemName: "arrowshape.turn.up.right", withConfiguration: UIImage.SymbolConfiguration(weight: .light))?.withTintColor(.systemYellow, renderingMode: .alwaysOriginal)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -57,8 +57,8 @@ class MediumTableCell: UICollectionViewCell, ConfiguringCell {
             imageView.heightAnchor.constraint(equalToConstant: 70),
             imageView.widthAnchor.constraint(equalToConstant: 70),
             
-            shareButton.heightAnchor.constraint(equalToConstant: 24),
-            shareButton.widthAnchor.constraint(equalToConstant: 24),
+            shareButton.heightAnchor.constraint(equalToConstant: 20),
+            shareButton.widthAnchor.constraint(equalToConstant: 20),
             
             finalStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             finalStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),

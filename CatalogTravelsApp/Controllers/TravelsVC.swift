@@ -79,10 +79,28 @@ class TravelsVC: UIViewController {
                 
         let item = sections[0].items[sender.tag]
         print(item)
-        
+        print(sender.tag)
         if sender.isSelected {
-            sender.zoomOutWithEasing(duration: 0.3, easingOffset: 0.3)
-            sender.setImage(favoriteImage, for: .selected)
+            let alertController = UIAlertController(title: "Confirm", message: "Are you sure you want to remove \(item.name) from favorite's table?", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+                print("These travel's has removed form favorite's")
+                sender.isSelected = false
+                var positionIndex = 0
+                for n in self.hasTapped {
+                    if n == sender.tag {
+                        self.hasTapped.remove(at: positionIndex)
+                        break
+                    }
+                    positionIndex += 1
+                }
+                sender.zoomOutWithEasing(duration: 0.3, easingOffset: 0.3)
+                sender.setImage(self.favoriteImage, for: .selected)
+            }))
+            alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
+                self.dismiss(animated: true, completion: nil)
+            }))
+            
+            self.present(alertController, animated: true, completion: nil)
         } else {
             let alertController = UIAlertController(title: "Confirm", message: "Would you like to added \(item.name) on a Favorite?", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
@@ -101,6 +119,25 @@ class TravelsVC: UIViewController {
         
     }
     
+    @objc private func didTapShareButton(_ sender: UIButton) {
+        let imageName = sections[0].items[sender.tag].image
+        let urlString = URL(string: imageName)
+        
+        if let imageUrl = urlString, let image = UIImage(named: imageName) {
+            let activityController = UIActivityViewController(activityItems: [
+                image,
+                imageUrl
+            ], applicationActivities: nil)
+            
+            // for Ipad support
+            activityController.popoverPresentationController?.sourceView = sender
+            activityController.popoverPresentationController?.sourceRect = sender.frame
+            
+            // presenting action sheet
+            self.present(activityController, animated: true, completion: nil)
+        }
+    }
+    
 }
 
 // MARK: - Diffable Data Source Setup
@@ -115,16 +152,15 @@ extension TravelsVC {
             case "smallTable":
                 return self.configureCells(SmallTableCell.self, with: app, for: indexPath)
             case "mediumTable":
-                return self.configureCells(MediumTableCell.self, with: app, for: indexPath)
+                let mediumCell = self.configureCells(MediumTableCell.self, with: app, for: indexPath)
+                mediumCell.shareButton.tag = indexPath.row
+                mediumCell.shareButton.addTarget(self, action: #selector(self.didTapShareButton(_:)), for: .touchUpInside)
+                return mediumCell
             default :
                 let featureCell = self.configureCells(FeaturedTableCell.self, with: app, for: indexPath)
-                print(self.hasTapped)
-                print(indexPath.row)
                 for n in self.hasTapped {
                     if n == indexPath.row {
-                        print("Got a travel's \(section.items[indexPath.row])")
                         featureCell.favoriteButton.isSelected = true
-                        featureCell.favoriteButton.zoomInWithEasing(duration: 0.3, easingOffset: 0.3)
                         featureCell.favoriteButton.setImage(self.favoriteImageFill, for: .selected)
                     }
                 }
@@ -209,9 +245,9 @@ extension TravelsVC {
     private func createSmallTableLayout(using section: Section) -> NSCollectionLayoutSection {
         
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                              heightDimension: .fractionalHeight(0.30))
+                                              heightDimension: .fractionalHeight(0.35))
         let itemLayout = NSCollectionLayoutItem(layoutSize: itemSize)
-        itemLayout.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15)
+        itemLayout.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
         
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.50),
                                                heightDimension: .estimated(200))

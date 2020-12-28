@@ -33,7 +33,7 @@ class SmallTableCell: UICollectionViewCell, ConfiguringCell {
     
     private func textToImage(drawText text: String, inImage image: UIImage, atPoint point: CGPoint?) -> UIImage {
         let textColor = UIColor.white
-        let textFont = UIFont.systemFont(ofSize: 11, weight: .semibold)
+        let textFont = UIFont.systemFont(ofSize: 95, weight: .semibold)
         let textStyle = NSMutableParagraphStyle()
         textStyle.alignment = .center
         
@@ -46,7 +46,7 @@ class SmallTableCell: UICollectionViewCell, ConfiguringCell {
             NSAttributedString.Key.paragraphStyle: textStyle
             ] as [NSAttributedString.Key : Any]
         
-        let imageWithOpacity = image.withAlpha(0.8)
+        let imageWithOpacity = image.withAlpha(0.7)
         imageWithOpacity.draw(in: CGRect(origin: CGPoint.zero, size: imageWithOpacity.size))
                 
         //vertically center (depending on font)
